@@ -14,7 +14,7 @@
 
 # babel-transform-dir
 
-<!-- description -->
+Transforms javascript files within a directory by babel, and expose a Promise API.
 
 ## Install
 
@@ -24,8 +24,41 @@ $ npm install babel-transform-dir --save
 
 ## Usage
 
+```
+|-- lib/   # empty
+|-- src/
+|     |-- a.js
+|     |-- b.js
+|-- .babelrc
+```
+
 ```js
-const babel_transform_dir = require('babel-transform-dir')
+const transform = require('babel-transform-dir')
+
+// Transform all javascript files in `./src` and write the result to `./lib`
+transform('./src', './lib')
+.then(() => {
+  console.log('done')
+})
+
+// Or explicitly specify babel config
+readJson('./.babelrc')
+.then((babel_config) => {
+  return transform('./src', './lib', {
+    babel: babel_config,
+    // Invokes whenever a file is transformed and written.
+    onFile: (file) => {
+      console.log(`src/${file} -> lib/${file}`)
+    }
+  })
+})
+.then(() => {
+  console.log('done')
+})
+
+// src/a.js -> lib/a.js
+// src/b.js -> lib/b.js
+// done
 ```
 
 ## License
