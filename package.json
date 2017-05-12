@@ -1,6 +1,6 @@
 {
   "name": "babel-transform-dir",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "babel-transform-dir",
   "main": "index.js",
   "files": [
