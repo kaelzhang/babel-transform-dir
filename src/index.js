@@ -1,6 +1,6 @@
 const globby = require('globby')
 const path = require('path')
-const fs = require('fs-promise')
+const fs = require('fs-extra')
 const babel_core = require('babel-core')
 const { EventEmitter } = require('events')
 
