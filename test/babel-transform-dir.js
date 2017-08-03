@@ -1,7 +1,7 @@
 const test = require('ava')
 const transform = require('..')
 const path = require('path')
-const fs = require('fs-promise')
+const fs = require('fs-extra')
 
 const fixture = (src) => {
   return path.join(__dirname, 'fixtures', src)
