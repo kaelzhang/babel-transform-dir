@@ -1,6 +1,7 @@
 # babel dist
 /lib
 /test/fixtures/lib
+package-lock.json
 
 # Numerous always-ignore extensions
 *.bak
