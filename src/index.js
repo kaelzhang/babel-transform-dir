@@ -10,7 +10,10 @@ module.exports = (src, dest, options) => {
   dest = path.resolve(dest)
 
   function t (file) {
-    return transform(file, src, dest, options)
+    return transform(file, src, dest, {
+      filename:file,
+      ...options
+    })
   }
 
   return globby('**/*.js', {
@@ -29,10 +32,7 @@ async function transform (file, src, dest, {babel, onFile} = {}) {
 
   const {
     code
-  } = babel
-    ? babel_core.transform(content.toString(), babel)
-    : babel_core.transform(content.toString())
-
+  } = babel_core.transform(content.toString(), babel);
 
   return fs.outputFile(destpath, code).then(() => {
     onFile && onFile(file)
